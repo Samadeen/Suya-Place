@@ -45,7 +45,9 @@ header {
 
 /* Home */
 .home h2,
-.base h2 {
+.base h2,
+.toppings h2,
+.order h2 {
   font-size: 2.5rem;
   margin-bottom: 2.5rem;
 }
@@ -65,24 +67,33 @@ header {
 .base ul {
   margin-bottom: 4rem;
 }
+/* List */
 
-.base li {
+li {
   list-style: none;
   margin-bottom: 1rem;
   font-size: 1.4rem;
   cursor: pointer;
 }
 
-.base li span.active {
+li span.active {
   color: #cb0000;
   font-weight: bold;
   position: relative;
 }
 
-.base li span.active::after {
+li span.active::after {
   content: '>';
   position: absolute;
   top: -0.05rem;
   left: -1rem;
-  transform: scale(0.8, 1);
+}
+
+.order p {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.order p.order_para {
+  margin-bottom: 0.2rem;
 }
