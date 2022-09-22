@@ -1,24 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Base from './components/Base';
+import Header from './components/Header';
+import Home from './components/Home';
+import Order from './components/Order';
+import Toppings from './components/Toppings';
 
 function App() {
+  const [suya, setSuya] = useState({ type: '', toppings: [] });
+
+  const addType = (type) => {
+    setSuya({ ...suya, type });
+  };
+
+  const addToppings = (topping) => {
+    let newToppings;
+    if (!suya.toppings.includes(topping)) {
+      newToppings = [...suya.toppings, topping];
+      console.log(newToppings);
+    } else {
+      newToppings = suya.toppings.filter((item) => item !== topping);
+      console.log(newToppings);
+    }
+    setSuya({ ...suya, toppings: newToppings });
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/base' element={<Base addType={addType} suya={suya} />} />
+        <Route
+          path='/toppings'
+          element={<Toppings addToppings={addToppings} suya={suya} />}
+        />
+        <Route path='/order' element={<Order suya={suya} />} />
+      </Routes>
+    </>
   );
 }
 
