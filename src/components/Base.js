@@ -8,7 +8,7 @@ const Base = ({ addType, suya }) => {
   return (
     <div className='container base flex'>
       <div>
-        <h2>Step 1: Choose your type</h2>
+        <h2>Step 1: Choose your type:</h2>
         <ul>
           {types.map((type) => {
             const addTypeHandler = () => {
