@@ -1,14 +1,58 @@
-const Order = ({ suya }) => {
+import { motion } from 'framer-motion';
+import { useEffect } from 'react';
+
+const containerVariant = {
+  initial: {
+    opacity: 0,
+    x: '100vw',
+    transition: {
+      staggerChildren: 0.4,
+    },
+  },
+  animate: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      mass: 0.5,
+      type: 'spring',
+      damping: 8,
+      staggerChildren: 0.4,
+      when: 'beforeChildren',
+    },
+  },
+};
+
+const childVariants = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+  },
+};
+
+const Order = ({ suya, setShowModal }) => {
+  useEffect(() => {
+    setTimeout(() => setShowModal(true), 2000);
+  }, [setShowModal]);
+
   return (
-    <div className='container order flex'>
+    <motion.div
+      className='container order flex'
+      variants={containerVariant}
+      initial='initial'
+      animate='animate'
+    >
       <h2>Thank you for Ordering 😎</h2>
-      <p>You Ordered a "{suya.type} Suya" with:</p>
+      <motion.p variants={childVariants}>
+        You Ordered a "{suya.type} Suya" with:
+      </motion.p>
       {suya.toppings.map((topping) => (
-        <p key={topping} className='order_para'>
+        <motion.p variants={childVariants} key={topping} className='order_para'>
           {topping}
-        </p>
+        </motion.p>
       ))}
-    </div>
+    </motion.div>
   );
 };
 
