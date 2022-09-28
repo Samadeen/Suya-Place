@@ -86,7 +86,11 @@ const Toppings = ({ addToppings, suya }) => {
       </div>
       <motion.div className='' variants={nextVariant}>
         <Link to='/order'>
-          <motion.button className='btn btn-next' variants={buttonVariant}>
+          <motion.button
+            className='btn btn-next'
+            variants={buttonVariant}
+            whileHover='hover'
+          >
             Order
           </motion.button>
         </Link>
