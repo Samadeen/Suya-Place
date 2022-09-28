@@ -33,7 +33,7 @@ const childVariants = {
 
 const Order = ({ suya, setShowModal }) => {
   useEffect(() => {
-    setTimeout(() => setShowModal(true), 2000);
+    setTimeout(() => setShowModal(true), 6000);
   }, [setShowModal]);
 
   return (
